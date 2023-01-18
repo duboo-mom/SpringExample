@@ -33,7 +33,7 @@
 			, `createdAt`
 			, `updatedAt`
 		)
-		VALUES
+		VALUE
 		(
 			#{name}
 			, #{birthday}
@@ -41,9 +41,30 @@
 			, #{introduce}
 			, now()
 			, now()
-		)
-		
+		)	
+	</insert>
 	
+	<insert id="insertUserByObject" parameterType="com.duboomom.spring.ex.jsp.model.NewUser"
+	useGeneratedKeys="true" keyProperty="id">
+		INSERT INTO
+			`new_user`
+		(
+			`name`
+			, `yyyymmdd`
+			, `email`
+			, `introduce`
+			, `createdAt`
+			, `updatedAt`
+		)
+		VALUE
+		(
+			#{name}
+			, #{yyyymmdd}
+			, #{email}
+			, #{introduce}
+			, now()
+			, now()
+		)
 	</insert>
 
 </mapper>
