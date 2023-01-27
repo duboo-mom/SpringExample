@@ -25,15 +25,38 @@
 				let yyyymmdd = $("#yyyymmddInput").val();
 				let email = $("#emailInput").val();
 				
+				if(name == "") {
+					alert("이름을 입력하세요.");
+					return;
+				}
+				
+				if(yyyymmdd == "") {
+					alert("생년월일을 입력하세요");
+					return;
+				}
+				
+				if(email == "") {
+					alert("이메일을 입력하세요.");
+					return;
+				}
+				
+				
 				$.ajax({
+					// request 옵션들
 					type:"get"
 					, url:"/ajax/user/add"
 					, data:{"name":name, "yyyymmdd":yyyymmdd, "email":email}
+					// response 옵션
+					// request status 200 떨어지면 success 수행
 					, success:function(data) {
+						// data라는건 서버에서 어떻게 받아도 문자열로 받게되고 ajax가 가공해서~~
+						// {"result":"success"} {"result":"fail"}
+						// 문자열을 jqeury가 객체화해서 data.result 이런식으로 사용 가능
 						if(data.result == "success") {
+							// 리스트 페이지로 이동
 							location.href = "/ajax/user/list";
 						} else {
-							alert("저장실패");
+							alert("저장 실패");
 						}
 					}
 					, error:function() {
