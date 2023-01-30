@@ -29,4 +29,16 @@ public class UserBO {
 		
 	}
 	
+	// email 중복 여부 알려주는 기능
+	public boolean isDuplicateEmail(String email) {
+		
+		int count = userDAO.selectCountEamil(email);
+		// count 가 0 이면 중복아님
+		if(count == 0) {
+			return false;
+		} else { // count 가 0이 아니면 중복
+			return true;
+		}
+	}
+	
 }

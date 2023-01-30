@@ -39,5 +39,14 @@
 		)	
 	
 	</insert>
+	
+	<select id="selectCountEamil" parameterType="string" resultType="int">
+			SELECT
+				count(1)
+			FROM
+				`new_user`
+			WHERE
+				`email` = #{email}
+	</select>
 
 </mapper>
